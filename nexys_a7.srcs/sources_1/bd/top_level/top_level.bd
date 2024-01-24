@@ -1,0 +1,498 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x1B9BBA10351B6CD1",
+      "device": "xc7a100tcsg324-1",
+      "gen_directory": "../../../../nexys_a7.gen/sources_1/bd/top_level",
+      "name": "top_level",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2021.1",
+      "validated": "true"
+    },
+    "design_tree": {
+      "source_100mhz": {
+        "system_clock": "",
+        "system_reset": ""
+      },
+      "sevenseg_driver": "",
+      "widget": "",
+      "ps2_keyboard": ""
+    },
+    "ports": {
+      "CLK100MHZ": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "ASSOCIATED_RESET": {
+            "value": "CPU_RESETN"
+          },
+          "CLK_DOMAIN": {
+            "value": "top_level_CLK100MHZ",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "CPU_RESETN": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default"
+          }
+        }
+      },
+      "SEG": {
+        "direction": "O",
+        "left": "7",
+        "right": "0"
+      },
+      "AN": {
+        "direction": "O",
+        "left": "7",
+        "right": "0"
+      },
+      "PS2_DATA": {
+        "direction": "I",
+        "left": "0",
+        "right": "0"
+      },
+      "PS2_CLK": {
+        "direction": "I",
+        "left": "0",
+        "right": "0"
+      },
+      "LED": {
+        "direction": "O",
+        "left": "15",
+        "right": "0"
+      },
+      "BTNC": {
+        "direction": "I"
+      }
+    },
+    "components": {
+      "source_100mhz": {
+        "ports": {
+          "CLK100MHZ": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "clk_100mhz": {
+            "type": "clk",
+            "direction": "O"
+          },
+          "CPU_RESETN": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "interconnect_aresetn": {
+            "type": "rst",
+            "direction": "O",
+            "left": "0",
+            "right": "0"
+          },
+          "peripheral_aresetn": {
+            "type": "rst",
+            "direction": "O",
+            "left": "0",
+            "right": "0"
+          }
+        },
+        "components": {
+          "system_clock": {
+            "vlnv": "xilinx.com:ip:clk_wiz:6.0",
+            "xci_name": "top_level_clk_wiz_0_0",
+            "xci_path": "ip/top_level_clk_wiz_0_0/top_level_clk_wiz_0_0.xci",
+            "inst_hier_path": "source_100mhz/system_clock",
+            "parameters": {
+              "CLKOUT1_DRIVES": {
+                "value": "BUFGCE"
+              },
+              "CLKOUT2_DRIVES": {
+                "value": "BUFGCE"
+              },
+              "CLKOUT3_DRIVES": {
+                "value": "BUFGCE"
+              },
+              "CLKOUT4_DRIVES": {
+                "value": "BUFGCE"
+              },
+              "CLKOUT5_DRIVES": {
+                "value": "BUFGCE"
+              },
+              "CLKOUT6_DRIVES": {
+                "value": "BUFGCE"
+              },
+              "CLKOUT7_DRIVES": {
+                "value": "BUFGCE"
+              },
+              "CLK_OUT1_PORT": {
+                "value": "clk_100mhz"
+              },
+              "FEEDBACK_SOURCE": {
+                "value": "FDBK_AUTO"
+              },
+              "USE_LOCKED": {
+                "value": "false"
+              },
+              "USE_RESET": {
+                "value": "false"
+              },
+              "USE_SAFE_CLOCK_STARTUP": {
+                "value": "true"
+              }
+            }
+          },
+          "system_reset": {
+            "vlnv": "xilinx.com:ip:proc_sys_reset:5.0",
+            "xci_name": "top_level_proc_sys_reset_0_0",
+            "xci_path": "ip/top_level_proc_sys_reset_0_0/top_level_proc_sys_reset_0_0.xci",
+            "inst_hier_path": "source_100mhz/system_reset"
+          }
+        },
+        "nets": {
+          "CLK100MHZ_1": {
+            "ports": [
+              "CLK100MHZ",
+              "system_clock/clk_in1"
+            ]
+          },
+          "CPU_RESETN_1": {
+            "ports": [
+              "CPU_RESETN",
+              "system_reset/ext_reset_in"
+            ]
+          },
+          "system_clock_clk_100mhz": {
+            "ports": [
+              "system_clock/clk_100mhz",
+              "clk_100mhz",
+              "system_reset/slowest_sync_clk"
+            ]
+          },
+          "system_reset_interconnect_aresetn": {
+            "ports": [
+              "system_reset/interconnect_aresetn",
+              "interconnect_aresetn"
+            ]
+          },
+          "system_reset_peripheral_aresetn": {
+            "ports": [
+              "system_reset/peripheral_aresetn",
+              "peripheral_aresetn"
+            ]
+          }
+        }
+      },
+      "sevenseg_driver": {
+        "vlnv": "xilinx.com:module_ref:sevenseg_driver:1.0",
+        "xci_name": "top_level_sevenseg_driver_0_0",
+        "xci_path": "ip/top_level_sevenseg_driver_0_0/top_level_sevenseg_driver_0_0.xci",
+        "inst_hier_path": "sevenseg_driver",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "sevenseg_driver",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "resetn",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/source_100mhz/system_clock_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "resetn": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_LOW",
+                "value_src": "constant"
+              }
+            }
+          },
+          "display": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "digit_enable": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "ANODE": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "CATHODE": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          }
+        }
+      },
+      "widget": {
+        "vlnv": "xilinx.com:module_ref:widget:1.0",
+        "xci_name": "top_level_widget_0_0",
+        "xci_path": "ip/top_level_widget_0_0/top_level_widget_0_0.xci",
+        "inst_hier_path": "widget",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "widget",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "resetn",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/source_100mhz/system_clock_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "resetn": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_LOW",
+                "value_src": "constant"
+              }
+            }
+          },
+          "key_code": {
+            "direction": "I",
+            "left": "8",
+            "right": "0"
+          },
+          "kc_valid": {
+            "direction": "I"
+          },
+          "button": {
+            "direction": "I"
+          },
+          "key_count": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "display": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "digit_enable": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          }
+        }
+      },
+      "ps2_keyboard": {
+        "vlnv": "xilinx.com:module_ref:ps2_keyboard:1.0",
+        "xci_name": "top_level_ps2_keyboard_0_0",
+        "xci_path": "ip/top_level_ps2_keyboard_0_0/top_level_ps2_keyboard_0_0.xci",
+        "inst_hier_path": "ps2_keyboard",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "ps2_keyboard",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/source_100mhz/system_clock_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "resetn": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_LOW",
+                "value_src": "constant"
+              }
+            }
+          },
+          "ps2_clk": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "ps2_data": {
+            "direction": "I"
+          },
+          "key_code": {
+            "direction": "O",
+            "left": "8",
+            "right": "0"
+          },
+          "kc_valid": {
+            "direction": "O"
+          }
+        }
+      }
+    },
+    "nets": {
+      "CLK100MHZ_1": {
+        "ports": [
+          "CLK100MHZ",
+          "source_100mhz/CLK100MHZ"
+        ]
+      },
+      "CPU_RESETN_1": {
+        "ports": [
+          "CPU_RESETN",
+          "source_100mhz/CPU_RESETN"
+        ]
+      },
+      "button_0_1": {
+        "ports": [
+          "BTNC",
+          "widget/button"
+        ]
+      },
+      "probe0_0_1": {
+        "ports": [
+          "PS2_DATA",
+          "ps2_keyboard/ps2_data"
+        ]
+      },
+      "probe1_0_1": {
+        "ports": [
+          "PS2_CLK",
+          "ps2_keyboard/ps2_clk"
+        ]
+      },
+      "ps2_keyboard_kc_valid": {
+        "ports": [
+          "ps2_keyboard/kc_valid",
+          "widget/kc_valid"
+        ]
+      },
+      "ps2_keyboard_key_code": {
+        "ports": [
+          "ps2_keyboard/key_code",
+          "widget/key_code"
+        ]
+      },
+      "sevenseg_driver_ANODE": {
+        "ports": [
+          "sevenseg_driver/ANODE",
+          "AN"
+        ]
+      },
+      "sevenseg_driver_CATHODE": {
+        "ports": [
+          "sevenseg_driver/CATHODE",
+          "SEG"
+        ]
+      },
+      "source_100mhz_interconnect_aresetn": {
+        "ports": [
+          "source_100mhz/interconnect_aresetn",
+          "sevenseg_driver/resetn"
+        ]
+      },
+      "source_100mhz_peripheral_aresetn": {
+        "ports": [
+          "source_100mhz/peripheral_aresetn",
+          "widget/resetn",
+          "ps2_keyboard/resetn"
+        ]
+      },
+      "system_clock_clk_100mhz": {
+        "ports": [
+          "source_100mhz/clk_100mhz",
+          "sevenseg_driver/clk",
+          "widget/clk",
+          "ps2_keyboard/clk"
+        ]
+      },
+      "widget_digit_enable": {
+        "ports": [
+          "widget/digit_enable",
+          "sevenseg_driver/digit_enable"
+        ]
+      },
+      "widget_display": {
+        "ports": [
+          "widget/display",
+          "sevenseg_driver/display"
+        ]
+      },
+      "widget_key_count": {
+        "ports": [
+          "widget/key_count",
+          "LED"
+        ]
+      }
+    }
+  }
+}
