@@ -1,6 +1,7 @@
 /*
     PS/2 keyboards send 8-bit scan-codes packaged into 11 bit bytes.
     PS2_DATA is valid on the low-going edge of PS2_CLK
+    On most keyboards, PS2_CLK runs at around 10 Khz
 
     In this module, a "scan_code" is the 8-bit code that we receive from the PS/2
     interface.   A single key-press (or key-release) may generate multiple scan-codes.
@@ -20,10 +21,11 @@ module ps2_keyboard
 );
 
 
-// Debounced versions of the ps2_clk and ps2_data
+// Debounced, synchronous versions of the ps2_clk and ps2_data
 wire ps2_clk_db, ps2_data_db;
 
-// These debounce the PS/2 CLK and DATA signals
+// These debounce the PS/2 CLK and DATA signals and make their edges 
+// synchronous with our system clock
 ps2_debounce(clk, resetn, ps2_clk,  ps2_clk_db );
 ps2_debounce(clk, resetn, ps2_data, ps2_data_db);
 
@@ -34,6 +36,12 @@ ps2_debounce(clk, resetn, ps2_data, ps2_data_db);
 //
 // Whenever a scan_code has been completely received, this block generates a 
 // high-going edge on sc_valid.
+//
+// Keep in mind that this block is being driven by PS2_CLK, which means it's 
+// running at roughly 10KHz, <not> at our system-clock rate.
+//
+// The debouncers immediately above ensure that edges of our debounced PS2_CLK 
+// are synchronous with our system clock signal "clk"
 //==============================================================================
 reg[3:0] bit_counter;   // Count bits in the 11-bit bytes
 reg[7:0] scan_code;     // Scan code received from the keyboard
